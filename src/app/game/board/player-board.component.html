@@ -1,0 +1,20 @@
+<div>
+  <h6>Selected cell: {{selectedCell}}</h6>
+  <table>
+    <tr>
+      <td></td>
+      <td *ngFor="let col of board.cols">
+        <img [attr.src]="imageService.forColumn(col)" />
+      </td>
+    </tr>
+    <tr *ngFor="let row of board.rows">
+      <td>
+        <img [attr.src]="imageService.forRow(row)" />
+      </td>
+      <td *ngFor="let col of board.cols" [attr.id]="col.name + row.name">
+        <app-board-cell [cell]="getCell(col.name, row.name)" (onChosen)="selectCell($event)"></app-board-cell>
+      </td>
+    </tr>
+  </table>
+  <!-- <app-board-track style="float:left"></app-board-track> -->
+</div>
