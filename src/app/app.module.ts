@@ -14,6 +14,7 @@ import { ImagesService } from './services/images.service';
 import { IAppState, initialState } from './store/store.state';
 import { rootReducer } from './store/store.reducers';
 import { GameActions } from './store/store.actions';
+import { NgMaterialImports } from './utils/ng-mat-imports.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GameActions } from './store/store.actions';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgReduxModule
+    NgReduxModule,
+    NgMaterialImports
   ],
   providers: [ImagesService, GameActions],
   bootstrap: [AppComponent]

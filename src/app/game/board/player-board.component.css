@@ -1,0 +1,12 @@
+.player-board {
+    height: 520px;
+    width: 520px;
+}
+
+.player-board .col img {
+     float: right;
+}
+
+.player-board .row img {
+    vertical-align: auto;
+}

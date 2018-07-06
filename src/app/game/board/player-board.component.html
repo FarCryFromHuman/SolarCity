@@ -1,20 +1,18 @@
 <div>
   <h6>Selected cell: {{selectedCell}}</h6>
-  <table>
-    <tr>
-      <td></td>
-      <td *ngFor="let col of board.cols">
-        <img [attr.src]="imageService.forColumn(col)" />
-      </td>
-    </tr>
-    <tr *ngFor="let row of board.rows">
-      <td>
+  <mat-grid-list [cols]="board.cols.length + 1" rowHeight="fit" class="player-board">
+    <mat-grid-tile class=".col"></mat-grid-tile>
+    <mat-grid-tile *ngFor="let col of board.cols" class=".col">
+      <img [attr.src]="imageService.forColumn(col)" />
+    </mat-grid-tile>
+    <ng-container *ngFor="let row of board.rows">
+      <mat-grid-tile>
         <img [attr.src]="imageService.forRow(row)" />
-      </td>
-      <td *ngFor="let col of board.cols" [attr.id]="col.name + row.name">
+      </mat-grid-tile>
+      <mat-grid-tile *ngFor="let col of board.cols">
         <app-board-cell [cell]="getCell(col.name, row.name)" (onChosen)="selectCell($event)"></app-board-cell>
-      </td>
-    </tr>
-  </table>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
   <!-- <app-board-track style="float:left"></app-board-track> -->
 </div>
