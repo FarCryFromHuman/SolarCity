@@ -1,4 +1,9 @@
-<h3>
-    It's {{(currentPlayer$ | async)?.name ? (currentPlayer$ | async).name : 'Player ' + (currentPlayer$ | async).number}}'s turn!
-</h3>
-<app-player *ngFor="let player of players$ | async" [player]="player" (onCellSelected)="cellSelected($event)"></app-player>
+<ng-container *ngIf="game$ | async">
+    <h3>
+        It's {{(currentPlayer$ | async)?.name ? (currentPlayer$ | async).name : 'Player ' + (currentPlayer$ | async).number}}'s turn!
+    </h3>
+    <app-player *ngFor="let player of players$ | async" [player]="player" (onCellSelected)="cellSelected($event)"></app-player>
+</ng-container>
+<ng-container *ngIf="!(game$ | async)">
+    <button mat-raised-button (click)="startGame()">Start Game</button>
+</ng-container>

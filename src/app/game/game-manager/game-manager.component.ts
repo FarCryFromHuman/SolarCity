@@ -31,27 +31,9 @@ export class GameManagerComponent implements OnInit {
     //this.tempSetup();
   }
 
-  // temp
-  // tempSetup() {
-  //   //init game
-  //   this.game = new Game();
-
-  //   let createBoard = function (rowCount: number, colCount: number): PlayerBoard {
-  //     var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  //     let cols = Array<number>(colCount).fill(0).map((c, i) => new Column(letters.charAt(i)));
-  //     let rows = Array<number>(rowCount).fill(0).map((r, i) => new Row((i + 1).toString()));
-  //     let cells = new Array<Cell>();
-  //     for (let col of cols)
-  //       for (let row of rows)
-  //         cells.push(new Cell(col.name + row.name));
-  //     return new PlayerBoard(rows, cols, cells);
-  //   }
-
-  //   // create players with boards
-  //   let playerNames = ['Austin', 'Emily', null, 'Matt']
-  //   this.game.players = playerNames.map((p, i) =>
-  //     new Player(i + 1, p, createBoard(this.rowCount, this.colCount)));
-  // }
+  startGame() {
+    this.ngRedux.dispatch(this.actions.startGame());
+  }
 
   cellSelected(context: { player: Player, cell: Cell }) {
     console.log('bubbled up ' + context.player.name + '\'s cell ' + context.cell.name);

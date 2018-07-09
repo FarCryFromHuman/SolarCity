@@ -15,6 +15,9 @@ import { IAppState, initialState } from './store/store.state';
 import { rootReducer } from './store/store.reducers';
 import { GameActions } from './store/store.actions';
 import { NgMaterialImports } from './utils/ng-mat-imports.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { NotFoundComponent } from './utils/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { NgMaterialImports } from './utils/ng-mat-imports.module';
     PlayerBoardComponent,
     BoardCellComponent,
     BoardTrackComponent,
-    PlayerComponent
+    PlayerComponent,
+    DashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NgReduxModule,
-    NgMaterialImports
+    NgMaterialImports,
+    AppRoutingModule
   ],
   providers: [ImagesService, GameActions],
   bootstrap: [AppComponent]

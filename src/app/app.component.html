@@ -1,9 +1,28 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center;margin:auto;">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-<div id="play-area">
-  <app-game-manager [playerCount]="4" [colCount]="4" [rowCount]="4"></app-game-manager>
-</div>
+<mat-toolbar>
+  Welcome to {{ title }}!
+  <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span>Options</span>
+    </button>
+  </mat-menu> -->
+</mat-toolbar>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+<!-- <mat-tab-group>
+  <mat-tab label="Chat">
+    <h1>Some tab content</h1>
+    <p>...</p>
+  </mat-tab>
+  <mat-tab label="Play">
+    <app-game-manager *ngIf="state$.currentGame"></app-game-manager>
+    <button mat-raised-button *ngIf="!state$.currentGame">Start Game</button>
+  </mat-tab>
+</mat-tab-group> -->
+<router-outlet></router-outlet>
