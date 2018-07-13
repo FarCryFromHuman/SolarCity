@@ -10,14 +10,16 @@ export const currentPlayer = (state: Game): Player => {
 }
 
 export const adjacentSpaces = (state: Game, space: Space): Space[] => {
-    let columnName = space.name[0];
+    let colName = space.name[0];
     let rowName = space.name[1];
     let board = currentPlayer(state).board;
 
-    let colNames = adjacentColNames(columnName);
+    let colNames = adjacentColNames(colName);
     let rowNames = adjacentRowNames(rowName);
+    let neighbors = colNames.map(c => c + rowName)
+        .concat(rowNames.map(r => colName + r))
     return board.spaces.filter(
-        s => colNames.includes(s.name[0]) || rowNames.includes(s.name[1]));
+        s => neighbors.includes(s.name));
 }
 
 export const adjacentColNames = (columnName): String[] => {
