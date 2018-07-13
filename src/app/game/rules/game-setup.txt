@@ -1,0 +1,20 @@
+Player setup:
+* Setup board (4x4: columns A-D, rows 1-4)
+* Set skyscraper tracker to 0
+* Set skygarden tracker to 0
+
+Main board setup:
+* Set round marker to 1
+* Choose 6 buildings randomly
+* Order buildings in descending order (value is pips in corner of building card)
+  * Ties are resolved by keeping randomized order
+* Populate skyscraper stacks (5 each for 2 players, 7 for 3, 9 for 4)
+* Mix into three stacks, combining stack 1 with 6, 2 with 5, and 3 with 4
+* Choose a number of public structures randomly (10 for 2 players, 14 for 3, 18 for 4)
+* Place chosen structures in a stack
+* Deal 3 structures from the public structures stack
+  * If a duplicate structure is dealt, move it to the bottom of the stack and deal another until all three structures are unique
+
+Remaining setup:
+* Choose player order randomly
+* Hand out Ecoins to each player: 6 + 3x number of players ahead of the player (6-9-12-15)

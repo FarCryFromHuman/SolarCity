@@ -3,7 +3,7 @@ import { Reducer, AnyAction, combineReducers } from "redux";
 import { tassign } from 'tassign';
 import { GameActions } from "./store.actions";
 import { Game } from "../game/models/game.model";
-import { PlayerBoard, Column, Row, Cell } from "../game/models/board.model";
+import { PlayerBoard, Column, Row, Space } from "../game/models/board.model";
 import { Player } from "../game/models/player.model";
 
 const gameStateReducer: Reducer<Game> = (state: Game = null, action: AnyAction): Game => {
@@ -25,10 +25,10 @@ function startGame(state: Game, action: AnyAction): Game {
         var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let cols = Array<number>(colCount).fill(0).map((c, i) => new Column(letters.charAt(i)));
         let rows = Array<number>(rowCount).fill(0).map((r, i) => new Row((i + 1).toString()));
-        let cells = new Array<Cell>();
+        let cells = new Array<Space>();
         for (let col of cols)
             for (let row of rows)
-                cells.push(new Cell(col.name + row.name));
+                cells.push(new Space(col.name + row.name));
         return new PlayerBoard(rows, cols, cells);
     }
 

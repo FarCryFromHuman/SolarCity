@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Cell } from '../../models/board.model';
+import { Space } from '../../models/board.model';
 import { ImagesService } from '../../../services/images.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { ImagesService } from '../../../services/images.service';
 })
 export class BoardCellComponent implements OnInit {
 
-  @Input() cell: Cell;
-  @Output() onChosen = new EventEmitter<Cell>();
+  @Input() cell: Space;
+  @Output() onChosen = new EventEmitter<Space>();
   imagePath: string;
 
   constructor(private imageService: ImagesService) { }
@@ -20,7 +20,7 @@ export class BoardCellComponent implements OnInit {
   }
 
   onClick() {
-    if (!this.cell.structure || this.cell.structure.type == 'Skyscraper')
-      this.onChosen.emit(this.cell);
+    //if (!this.cell.structure || this.cell.structure.type == 'Skyscraper')
+    this.onChosen.emit(this.cell);
   }
 }

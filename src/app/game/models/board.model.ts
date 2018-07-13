@@ -1,4 +1,4 @@
-import { Structure } from "./pieces.model";
+import { SPACES } from "../rules/spaces";
 
 // version with Player back-reference
 // class Board {
@@ -6,7 +6,7 @@ import { Structure } from "./pieces.model";
 // }
 
 class PlayerBoard {
-    constructor(public rows: Row[], public cols: Column[], public cells: Cell[]) { }
+    constructor(public rows: Row[], public cols: Column[], public spaces: Space[]) { }
 }
 
 class Column {
@@ -19,10 +19,11 @@ class Row {
     activated: boolean = false;
 }
 
-class Cell {
+class Space {
     constructor(public name: string) { }
-    structure?: Structure;
+    itemName: SPACES = 'EMPTY';
+    itemType: 'Skyscraper' | 'SkyGarden' | 'Public Building';
     activated: boolean = false;
 }
 
-export { PlayerBoard, Column, Row, Cell }
+export { PlayerBoard, Column, Row, Space }

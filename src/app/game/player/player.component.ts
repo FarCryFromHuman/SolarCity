@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Player } from '../models/player.model';
-import { PlayerBoard, Cell } from '../models/board.model';
+import { PlayerBoard, Space } from '../models/board.model';
 
 @Component({
   selector: 'app-player',
@@ -9,14 +9,14 @@ import { PlayerBoard, Cell } from '../models/board.model';
 })
 export class PlayerComponent implements OnInit {
   @Input() player: Player;
-  @Output() onCellSelected = new EventEmitter<{ player: Player, cell: Cell }>();
+  @Output() onCellSelected = new EventEmitter<{ player: Player, cell: Space }>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  cellSelected(context: { board: PlayerBoard, cell: Cell }) {
+  cellSelected(context: { board: PlayerBoard, cell: Space }) {
     this.onCellSelected.emit({ player: this.player, cell: context.cell });
   }
 }

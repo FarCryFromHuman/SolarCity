@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PlayerBoard, Row, Column, Cell } from '../models/board.model';
+import { PlayerBoard, Row, Column, Space } from '../models/board.model';
 import { Player } from '../models/player.model';
 import { Game } from '../models/game.model';
 import { Observable } from 'rxjs';
@@ -35,7 +35,7 @@ export class GameManagerComponent implements OnInit {
     this.ngRedux.dispatch(this.actions.startGame());
   }
 
-  cellSelected(context: { player: Player, cell: Cell }) {
+  cellSelected(context: { player: Player, cell: Space }) {
     console.log('bubbled up ' + context.player.name + '\'s cell ' + context.cell.name);
     this.ngRedux.dispatch(this.actions.takeMove(context.cell, null, null));
   }

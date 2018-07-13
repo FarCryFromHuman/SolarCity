@@ -1,0 +1,75 @@
+Game structure:
+* The game begins with the first round, on the first player's turn
+* The game ends if the final round has finished, based on player count
+  * Ending round is 5, 7, or 9 for 2, 3, or 4 players, respectively
+* The game ends immediately if one player fills their entire board
+* Each player may choose to pay off as many loan tokens as they wish
+* Scoring occurs:
+  * Each player LOSES one Solar Point for each loan token they have
+  * Each player GAINS one Solar Point for each Skygarden they have
+  * Each player LOSES one Solar Point for each empty space on their board
+  * Each player GAINS one Solar Point for every 12 Ecoins they have
+* The player with the most Solar Points wins
+  * If a tie, the tied player with the most Ecoins wins
+  * If still a tie, the tied player with the fewest empty spaces on their board wins
+  * If still a tie, all tied players win
+
+Round structure:
+* Beginning with the starting player, each player takes a turn
+* The round ends at the end of the player turn when there are no empty activation slots
+* Resolve any applicable public structure [END-OF-ROUND] effects
+  * If this is the last round, the game ends. Proceed to scoring.
+* All activation slots are cleared
+* All public structures on the main board gain tokens:
+  * If a public structure has less than 6 Ecoins on it, place 2 Ecoins on it
+  * If a public structure has 6+ Ecoins on it, place 1 Solar Point on it
+* Advance to the next round, beginning with the first player's turn
+
+Turn structure:
+* The player chooses one of three actions:
+  * Build a skyscraper (always available)
+  * Build a public structure (always available)
+  * Upgrade to a skygarden (only available if player has at least one skyscraper with an unactivated row/column)
+* At the end of the turn, if the player has filled their board, the game ends immediately
+  * If the game-ending player is the last player, also resolve all end-of-round effects
+
+Build a skyscraper:
+* The player chooses one of the skyscrapers from the available stacks
+* The player chooses an empty space on their board
+  * If there are any tokens on the empty space chosen, the player claims them
+* The player pays the cost of the skyscraper in Ecoins
+  * The cost is equal to the number of skyscrapers in the city before the build
+  * If the player cannot afford the cost, they must take loans until they can
+* The skyscraper is placed in the empty space
+* The player's skyscraper track is advanced by one
+* If there is at least one unactivated row or column intersecting the space, City Activation occurs
+
+Build a public structure:
+* The player chooses one of the public structures from the available options
+* If there are any tokens on the chosen structure, the player claims them
+* The player chooses an empty space on their board
+  * If there are any tokens on the empty space chosen, the player claims them
+* The player pays 6 Ecoins
+  * If the player cannot afford the cost, they must take loans until they can
+* The structure is placed in the empty space
+* If possible, a new public strcture is placed in the pool from the stacks
+* If there is at least one unactivated row or column intersecting the space, City Activation occurs
+
+Upgrade to a skygarden:
+* The player chooses a skyscraper on their board
+  * The skyscraper must have at least one unactivated row or column intersecting its space
+  * If there are any tokens on the space occupied by the skyscraper, the player claims them
+* The player pays the upgrade cost of the skyscraper in Ecoins
+  * The cost is equal to 2x the number of skygardens in the city before the upgrade
+  * If the player cannot afford the cost, they must take loans until they can
+* The player's skygarden track is increased by 1
+* The player's skyscraper track is decreased by 1
+* The player flips the skyscraper over to its skygarden side
+* The player resolves the skygarden's effect
+* City Activation occurs
+
+City Activation:
+* The activating player chooses an unactivated row or column that intersects the activating space
+* The activating player resolves the effects of every skyscraper in the chosen row/column, in an order of their choosing
+  * Skyscraper effects are ALWAYS OPTIONAL
+* Each player places an activation token on the chosen row or column, blocking it from future activations for the round

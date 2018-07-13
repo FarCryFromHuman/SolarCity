@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { PlayerBoard, Cell } from '../models/board.model';
+import { PlayerBoard, Space } from '../models/board.model';
 import { ImagesService } from '../../services/images.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ImagesService } from '../../services/images.service';
 })
 export class PlayerBoardComponent implements OnInit {
   @Input() board: PlayerBoard;
-  @Output() onCellSelected = new EventEmitter<{ board: PlayerBoard, cell: Cell }>();
+  @Output() onCellSelected = new EventEmitter<{ board: PlayerBoard, cell: Space }>();
 
   //TEMP
   selectedCell: string = 'NA';
@@ -19,12 +19,12 @@ export class PlayerBoardComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectCell(cell: Cell) {
+  selectCell(cell: Space) {
     this.selectedCell = cell.name;
     this.onCellSelected.emit({ board: this.board, cell });
   }
 
-  getCell(col: string, row: string): Cell {
-    return this.board.cells.find(c => c.name === col + row);
+  getCell(col: string, row: string): Space {
+    return this.board.spaces.find(c => c.name === col + row);
   }
 }

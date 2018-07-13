@@ -1,12 +1,12 @@
-import { Cell, Column, Row } from "../game/models/board.model";
+import { Space, Column, Row } from "../game/models/board.model";
 import { Injectable } from "@angular/core";
 
 @Injectable()
 export class ImagesService {
     private baseImagePath = '../assets/game/';
 
-    forCell(cell: Cell): string {
-        return this.baseImagePath + (cell.structure ? cell.structure.name : 'empty-cell') + '.png';
+    forCell(cell: Space): string {
+        return this.baseImagePath + cell.itemName.toLowerCase() + '.png';
     }
 
     forColumn(col: Column): string {
