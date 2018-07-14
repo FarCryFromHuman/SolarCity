@@ -1,12 +1,11 @@
 import { IAppState } from "./store.state";
-import { Reducer, AnyAction, combineReducers } from "redux";
-import { tassign } from 'tassign';
-import { GameActions } from "./store.actions";
+import { Reducer, combineReducers, Action } from "redux";
+import { GameActions, GameAction } from "./store.actions";
 import { Game } from "../game/models/game.model";
 import { PlayerBoard, Column, Row, Space } from "../game/models/board.model";
 import { Player } from "../game/models/player.model";
 
-const gameStateReducer: Reducer<Game> = (state: Game = null, action: AnyAction): Game => {
+const gameStateReducer: Reducer<Game> = (state: Game = null, action: GameAction): Game => {
     switch (action.type) {
         case GameActions.START_GAME: return startGame(state, action);
         case GameActions.TAKE_MOVE: return takeMove(state, action);
@@ -15,7 +14,7 @@ const gameStateReducer: Reducer<Game> = (state: Game = null, action: AnyAction):
     return state;
 }
 
-function startGame(state: Game, action: AnyAction): Game {
+function startGame(state: Game, action: GameAction): Game {
     let game = new Game();
     let playerCount = 4;
     let rowCount = 4;
@@ -33,6 +32,7 @@ function startGame(state: Game, action: AnyAction): Game {
     }
 
     // create players with boards
+    // should have access to action.payload here
     let playerNames = ['Austin', 'Emily', null, 'Matt']
     game.players = playerNames.map((p, i) =>
         new Player(i + 1, p, createBoard(rowCount, colCount)));
@@ -43,7 +43,7 @@ function startGame(state: Game, action: AnyAction): Game {
     return game;
 }
 
-function takeMove(state: Game, action: AnyAction): Game {
+function takeMove(state: Game, action: GameAction): Game {
     let player = state.currentPlayerIndex;
     let players = state.players;
 

@@ -32,7 +32,7 @@ export class GameManagerComponent implements OnInit {
   }
 
   startGame() {
-    this.ngRedux.dispatch(this.actions.startGame());
+    this.ngRedux.dispatch(this.actions.startGame([]));
   }
 
   cellSelected(context: { player: Player, cell: Space }) {
